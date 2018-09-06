@@ -15,7 +15,7 @@ void setup() {
 
 #ifdef _ESP32_HAL_I2C_H_
     // for esp32
-    Wire.begin(19, 18); //sda, scl
+    Wire.begin(SDA_PIN, SCL_PIN); //sda, scl
 #else
     Wire.begin();
 #endif
@@ -47,6 +47,5 @@ void loop() {
     Serial.println("horizontal direction: " + String(mySensor.magHorizDirection()));
 
     Serial.println("at " + String(millis()) + "ms");
-    delay(500);
+    delay(100);
 }
-

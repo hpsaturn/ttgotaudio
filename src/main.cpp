@@ -5,11 +5,10 @@
 #define SCL_PIN 18
 #endif
 
-MPU9250 mySensor;
+MPU9250 mpu;
 
 void setup() {
     while(!Serial);
-
     Serial.begin(115200);
     Serial.println("started");
 
@@ -20,32 +19,25 @@ void setup() {
     Wire.begin();
 #endif
 
-    mySensor.setWire(&Wire);
-
-    mySensor.beginAccel();
-    mySensor.beginMag();
-
+    mpu.setWire(&Wire);
+    mpu.beginAccel();
+    mpu.beginMag();
     // you can set your own offset for mag values
-    // mySensor.magXOffset = -50;
-    // mySensor.magYOffset = -55;
-    // mySensor.magZOffset = -10;
+    // mpu.magXOffset = -50;
+    // mpu.magYOffset = -55;
+    // mpu.magZOffset = -10;
 }
 
 void loop() {
-    mySensor.accelUpdate();
-    Serial.println("print accel values");
-    Serial.println("accelX: " + String(mySensor.accelX()));
-    Serial.println("accelY: " + String(mySensor.accelY()));
-    Serial.println("accelZ: " + String(mySensor.accelZ()));
-    Serial.println("accelSqrt: " + String(mySensor.accelSqrt()));
-
-    mySensor.magUpdate();
-    Serial.println("print mag values");
-    Serial.println("magX: " + String(mySensor.magX()));
-    Serial.println("maxY: " + String(mySensor.magY()));
-    Serial.println("magZ: " + String(mySensor.magZ()));
-    Serial.println("horizontal direction: " + String(mySensor.magHorizDirection()));
-
-    Serial.println("at " + String(millis()) + "ms");
+    mpu.accelUpdate();
+    char buffer [40];
+    sprintf(buffer,"aX:%+06.3f aY:%+06.3f aZ:%+06.3f",mpu.accelX(),mpu.accelY(),mpu.accelX());
+    Serial.print(buffer);
+    mpu.magUpdate();
+    sprintf(buffer," mX:%+08.3f mY:%+08.3f mZ:%+08.3f",mpu.magX(),mpu.magY(),mpu.magZ());
+    Serial.println(buffer);
+    // Serial.println("accelSqrt: " + String(mpu.accelSqrt()));
+    // Serial.println("horizontal direction: " + String(mpu.magHorizDirection()));
+    // Serial.println("at " + String(millis()) + "ms");
     delay(100);
 }

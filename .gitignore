@@ -30,3 +30,21 @@
 *.exe
 *.out
 *.app
+
+# Vim backups
+*.swp
+
+# PlatformIO work files
+.pioenvs
+.piolibdeps
+
+# Project
+secrets.load
+libraries
+*tags*
+
+.clang_complete
+.gcc-flags.json
+
+# travis
+.travis.yml

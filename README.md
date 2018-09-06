@@ -1,10 +1,8 @@
+<a href="https://github.com/hpsaturn/ttgotaudio/blob/master/images/collage.jpg"><img src="https://github.com/hpsaturn/ttgotaudio/blob/master/images/collage.jpg" align="right" width="420" ></a>
+
 # TTGO Audio Board 
 
 Some refactors and implementations for TTGO Audio T9 board. [PlatformIO](http://platformio.org/) project and **Arduino** compatible
-
----
-<a href="https://github.com/hpsaturn/ttgotaudio/blob/master/images/collage.jpg"><img src="https://github.com/hpsaturn/ttgotaudio/blob/master/images/collage.jpg" align="right" width="420" ></a>
----
 
 ## Features
 
